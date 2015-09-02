@@ -5,12 +5,12 @@
 
 import java.util.Calendar;
 import java.util.Scanner;
-import java.util.GregorianCalendar;
 
 public class Birthday {
     
-    private static final int MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
-    private static final int MILLIS_IN_WEEK = 1000 * 60 * 60 * 24 * 7;
+    private static final long MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
+    private static final long MILLIS_IN_WEEK = 1000 * 60 * 60 * 24 * 7;
+    private static final long MILLIS_IN_YEAR = 31557600000l;
     
     public static void main( String[] args ){
         
@@ -18,64 +18,42 @@ public class Birthday {
         Scanner scan = new Scanner( System.in );
         
         String name;        
-        String birthYear;   
-        String birthMonth;  
-        String birthDay;    
-        
         int year;
         int month;
         int day;
         
-        System.out.println();
         System.out.print( "Please enter your first name (no spaces) then " + 
                 "press Enter: " );
         name = scan.nextLine();
         
         System.out.print( "Enter the year in which you were born: " );
-        birthYear = scan.nextLine();
+        year = scan.nextInt();
         
         System.out.print( "Enter the month in which you were born (1-12): " );
-        birthMonth = scan.nextLine();
+        month = scan.nextInt();
         
         System.out.print( "Enter the day of the month in which you were " + 
                 "born (1-31): " );
-        birthDay = scan.nextLine();
+        day = scan.nextInt();
         
-        /* Convert input into integers */
-        year = Integer.parseInt( birthYear );
-        month = Integer.parseInt( birthMonth );
-        day = Integer.parseInt( birthDay );
-        
-        month = month - 1;  // Adjust for zero indexed month
-        
-        long yearsOld, weeksOld, daysOld;   // Computation variables
-        
-        /* Instantiate user birthdate */
-        Calendar birthDate = new GregorianCalendar( year, month, day );
-        birthDate.set( Calendar.HOUR_OF_DAY, 0 );
-        birthDate.set( Calendar.MINUTE, 0 );
-        birthDate.set(Calendar.SECOND, 0);
-        long startTime = birthDate.getTimeInMillis();
-        
-        /* Instantiate today's date */
-        Calendar today = new GregorianCalendar();
-        today.set(Calendar.HOUR_OF_DAY, 0);
-        today.set(Calendar.MINUTE, 0);
-        today.set(Calendar.SECOND, 0);
-        long endTime = today.getTimeInMillis();
-        
-        /* Compute elapsed years, weeks, and days, of user birthdate */
-        yearsOld = ( today.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR) );
-        
-        weeksOld = ( (endTime - startTime) / MILLIS_IN_WEEK );
+        Calendar c = Calendar.getInstance();
+        c.set(year, month-1,day);
 
-        daysOld = ( (endTime - startTime) / MILLIS_IN_DAY  );
+        long bDateMs = c.getTimeInMillis();
+        long todayMs = System.currentTimeMillis();
+        long length = todayMs - bDateMs;
         
-        /* Display the output */
-        System.out.println();
-        System.out.println( "Welcome to CSE 155H " + name + "!" );
-        System.out.println( "You are " + yearsOld + " years, " + weeksOld + 
-                " weeks, and " + daysOld + " days old today." );
+        
+
+        int years  = (int) (length / MILLIS_IN_YEAR);
+        length -= (years * MILLIS_IN_YEAR);
+        int weeks =  (int) (length / MILLIS_IN_WEEK);
+        length -= (weeks * MILLIS_IN_WEEK);
+        int days = (int) (length / MILLIS_IN_DAY);
+
+        System.out.println( "Welcome to the University of Nebraska-Lincoln " + name + "!" );
+        System.out.println( "You are " + years + " years, " + weeks + 
+                " weeks, and " + days + " days old today." );
         
         
     } 
