@@ -30,9 +30,7 @@ public class Area {
 		/* Compute the area using the formula */
 		area = (1 / 2 * base * height);
 
-		System.out.println("The area of the triangle is: " + area);
-
-		System.out.println();
+	    System.out.printf("The area is %f square units.\n", area);
 
 	}
 
