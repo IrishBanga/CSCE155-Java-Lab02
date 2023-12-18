@@ -1,0 +1,50 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Area",
+            "request": "launch",
+            "mainClass": "unl.soc.Area",
+            "projectName": "CSCE155-Java-Lab02"
+        },
+        {
+            "type": "java",
+            "name": "Birthday",
+            "request": "launch",
+            "mainClass": "unl.soc.Birthday",
+            "projectName": "CSCE155-Java-Lab02"
+        },
+        {
+            "type": "java",
+            "name": "BirthdayCLI",
+            "request": "launch",
+            "mainClass": "unl.soc.BirthdayCLI",
+            "args": "Irish 2000 1 1",
+            "projectName": "CSCE155-Java-Lab02"
+        },
+        {
+            "type": "java",
+            "name": "Dollar",
+            "request": "launch",
+            "mainClass": "unl.soc.Dollar",
+            "projectName": "CSCE155-Java-Lab02"
+        },
+        {
+            "type": "java",
+            "name": "Ranges",
+            "request": "launch",
+            "mainClass": "unl.soc.Ranges",
+            "projectName": "CSCE155-Java-Lab02"
+        }
+    ]
+}

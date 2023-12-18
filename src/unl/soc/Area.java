@@ -28,7 +28,7 @@ public class Area {
 		height = Double.parseDouble(inputHeight);
 
 		/* Compute the area using the formula */
-		area = (1 / 2 * base * height);
+		area = (double)1 / 2 * base * height;
 
 	    System.out.printf("The area is %f square units.\n", area);
 
